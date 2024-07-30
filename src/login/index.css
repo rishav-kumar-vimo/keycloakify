@@ -5,10 +5,14 @@
 @tailwind utilities;
 
 body.kcBodyClass {
-    @apply bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed;
+    @apply bg-none bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900;
     @apply font-geist;
 }
 
 .kcHeaderWrapperClass{
     @apply text-3xl font-bold underline;
+}
+
+.loginTitleHtml{
+    @apply bg-[url(./assets/img/background.jpg)] bg-no-repeat bg-center bg-fixed;
 }

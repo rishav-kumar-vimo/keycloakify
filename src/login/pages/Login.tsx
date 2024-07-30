@@ -21,6 +21,18 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
     return (
+        <>
+        <div className="h-10 bg-blue-900 w-full flex items-center justify-end text-white px-6">Vimo</div>
+        <div className="h-10 w-full text-blue-900 bg-white flex items-center justify-center">
+            <div className="px-4 flex items-center w-full max-w-[80%] justify-between text-blue-900">
+                <div className="text-3xl  font-bold text-green-700">V!MO</div>
+                <div className="flex space-x-4 items-center justify-between font-medium">
+                    <div>Get Covered</div>
+                    <div>Support</div>
+                    <div>Resources</div>
+                </div>
+            </div>
+        </div>
         <Template
             kcContext={kcContext}
             i18n={i18n}
@@ -71,19 +83,19 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     )}
                 </>
             }
-        >
+            >
             <div id="kc-form">
                 <div id="kc-form-wrapper">
                     {realm.password && (
                         <form
-                            id="kc-form-login"
+                        id="kc-form-login"
                             onSubmit={() => {
                                 setIsLoginButtonDisabled(true);
                                 return true;
                             }}
                             action={url.loginAction}
                             method="post"
-                        >
+                            >
                             {!usernameHidden && (
                                 <div className={kcClsx("kcFormGroupClass")}>
                                     <label htmlFor="username" className={kcClsx("kcLabelClass")}>
@@ -151,7 +163,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                         </div>
                                     )}
                                 </div>
-                                <div className={kcClsx("kcFormOptionsWrapperClass")}>
+                                <a href="https://google.com" className={kcClsx("kcFormOptionsWrapperClass")}>
                                     {realm.resetPasswordAllowed && (
                                         <span>
                                             <a tabIndex={6} href={url.loginResetCredentialsUrl}>
@@ -159,7 +171,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             </a>
                                         </span>
                                     )}
-                                </div>
+                                </a>
                             </div>
 
                             <div id="kc-form-buttons" className={kcClsx("kcFormGroupClass")}>
@@ -182,6 +194,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                 </div>
             </div>
         </Template>
+        </>
     );
 }
 
@@ -196,7 +209,7 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
         const passwordInputElement = document.getElementById(passwordInputId);
 
         assert(passwordInputElement instanceof HTMLInputElement);
-
+        
         passwordInputElement.type = isPasswordRevealed ? "text" : "password";
     }, [isPasswordRevealed]);
 
@@ -209,7 +222,7 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
                 aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
                 aria-controls={passwordInputId}
                 onClick={toggleIsPasswordRevealed}
-            >
+                >
                 <i className={kcClsx(isPasswordRevealed ? "kcFormPasswordVisibilityIconHide" : "kcFormPasswordVisibilityIconShow")} aria-hidden />
             </button>
         </div>
